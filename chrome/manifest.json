@@ -1,33 +1,28 @@
 {
   "name": "Github Issue Template",
-  "version": "0.1.2",
+  "version": "0.0.1",
   "manifest_version": 2,
-  "description": "Backbone for structuring Github Issues",
+  "description": "load Template Github Issues created",
   "icons": {
     "16": "icon16.png",
     "48": "icon48.png"
   },
   "permissions": [
-    "*://rawgit.com/",
-    "tabs"
+    "tabs",
+    "activeTab",
+    "http://github.com/*/issues/new",
+    "https://github.com/*/issues/new"
   ],
-  "content_scripts": [
-    {
-      "matches": ["*://github.com/*/issues/new"],
-      "js": [
-        "script/lib/jquery.min.js",
-        "script/lib/jquery.cursor-position.js",
-        "script/lib/jquery.select-range.js",
-        "script/new-issue-page.js"
-      ]
-    }
-  ],
+  "background": {
+    "scripts": [
+      "script/new-issue-page.js"
+    ],
+    "persistent": false
+  },
   "browser_action": {
     "default_icon": {
       "19": "icon19.png"
     },
-    "default_title": "Create new Github Issue",
-    "default_popup": "popup.html"
-  },
-  "options_page": "options.html"
+    "default_title": "Create new Github Issue"
+  }
 }
